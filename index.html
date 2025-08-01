@@ -25,19 +25,19 @@
       min-width: 80px;
       z-index: 5;
       pointer-events: none;
-      outline: 2px dashed rgba(0,0,0,0.2); /* TEMP DEBUG OUTLINE */
+      outline: 2px dashed rgba(0,0,0,0.2);
     }
 
     .left-lane {
-      left: 0;
+      left: 5%; /* Moved inward by 5% */
     }
     .right-lane {
-      right: 0;
+      right: 5%; /* Moved inward by 5% */
     }
 
     .bubble {
       position: absolute;
-      bottom: 0; /* Make bubbles start from the bottom */
+      bottom: 0;
       border-radius: 50%;
       background: rgba(255, 255, 255, 0.5);
       opacity: 0;
@@ -250,10 +250,9 @@
         console.warn(`⚠️ Lane with id ${laneId} not found.`);
         return;
       }
-      createBubble(lane); // immediate test
       function spawn() {
         createBubble(lane);
-        const nextIn = 400 + Math.random() * 400;
+        const nextIn = 800 + Math.random() * 800; // Slower: 800–1600ms
         setTimeout(spawn, nextIn);
       }
       setTimeout(spawn, initialDelay);
