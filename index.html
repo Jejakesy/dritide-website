@@ -21,7 +21,7 @@
       position: fixed;
       top: 0;
       bottom: 0;
-      width: 12%; /* 8% + 75% of remaining 5% gap = ~3.75% more */
+      width: 12%;
       min-width: 80px;
       z-index: 5;
       pointer-events: none;
@@ -29,10 +29,10 @@
     }
 
     .left-lane {
-      left: 5%;
+      left: calc(5% - 30px);
     }
     .right-lane {
-      right: 5%;
+      right: calc(5% - 30px);
     }
 
     .bubble {
