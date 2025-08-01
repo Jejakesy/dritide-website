@@ -21,7 +21,7 @@
       position: fixed;
       top: 0;
       bottom: 0;
-      width: 13%; /* Increased total width: 8% + 5% */
+      width: 13%;
       min-width: 100px;
       z-index: 5;
       pointer-events: none;
@@ -29,12 +29,10 @@
     }
 
     .left-lane {
-      left: 0;
-      padding-left: 5%; /* Inner shift inward */
+      left: -5%; /* Shift outer edge outward, keep inner edge in place */
     }
     .right-lane {
-      right: 0;
-      padding-right: 5%; /* Inner shift inward */
+      right: -5%; /* Shift outer edge outward, keep inner edge in place */
     }
 
     .bubble {
