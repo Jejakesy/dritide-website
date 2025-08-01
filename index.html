@@ -152,22 +152,28 @@
 <body>
   <div class="bubble-container">
     <!-- Left side bubbles -->
-    <div class="bubble" style="width: 100px; height: 100px; left: 3%; animation-delay: 0s;"></div>
-    <div class="bubble" style="width: 110px; height: 110px; left: 6%; animation-delay: 2s;"></div>
-    <div class="bubble" style="width: 95px; height: 95px; left: 9%; animation-delay: 4s;"></div>
-    <div class="bubble" style="width: 105px; height: 105px; left: 12%; animation-delay: 6s;"></div>
-    <div class="bubble" style="width: 90px; height: 90px; left: 15%; animation-delay: 8s;"></div>
-    <div class="bubble" style="width: 115px; height: 115px; left: 18%; animation-delay: 10s;"></div>
-    <div class="bubble" style="width: 100px; height: 100px; left: 21%; animation-delay: 12s;"></div>
-    <div class="bubble" style="width: 105px; height: 105px; left: 24%; animation-delay: 13.5s;"></div>
-    <!-- Right side bubbles -->
-    <div class="bubble" style="width: 100px; height: 100px; left: 76%; animation-delay: 1s;"></div>
-    <div class="bubble" style="width: 110px; height: 110px; left: 79%; animation-delay: 3s;"></div>
-    <div class="bubble" style="width: 95px; height: 95px; left: 82%; animation-delay: 5s;"></div>
-    <div class="bubble" style="width: 105px; height: 105px; left: 85%; animation-delay: 7s;"></div>
-    <div class="bubble" style="width: 90px; height: 90px; left: 88%; animation-delay: 9s;"></div>
-    <div class="bubble" style="width: 115px; height: 115px; left: 91%; animation-delay: 11s;"></div>
-    <div class="bubble" style="width: 100px; height: 100px; left: 94%; animation-delay: 13s;"></div>
+    <script>
+      for (let i = 0; i < 20; i++) {
+        const bubble = document.createElement('div');
+        bubble.className = 'bubble';
+        const size = 80 + Math.random() * 40;
+        bubble.style.width = `${size}px`;
+        bubble.style.height = `${size}px`;
+        bubble.style.left = `${Math.random() * 10 + 1}%`;
+        bubble.style.animationDelay = `${Math.random() * 14}s`;
+        document.write(bubble.outerHTML);
+      }
+      for (let i = 0; i < 20; i++) {
+        const bubble = document.createElement('div');
+        bubble.className = 'bubble';
+        const size = 80 + Math.random() * 40;
+        bubble.style.width = `${size}px`;
+        bubble.style.height = `${size}px`;
+        bubble.style.left = `${Math.random() * 10 + 89}%`;
+        bubble.style.animationDelay = `${Math.random() * 14}s`;
+        document.write(bubble.outerHTML);
+      }
+    </script>
   </div>
 
   <header>
