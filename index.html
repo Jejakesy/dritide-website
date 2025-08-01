@@ -21,18 +21,20 @@
       position: fixed;
       top: 0;
       bottom: 0;
-      width: 8%;
-      min-width: 80px;
+      width: 13%; /* Increased total width: 8% + 5% */
+      min-width: 100px;
       z-index: 5;
       pointer-events: none;
       outline: 2px dashed rgba(0,0,0,0.2);
     }
 
     .left-lane {
-      left: 5%; /* Moved inward by 5% */
+      left: 0;
+      padding-left: 5%; /* Inner shift inward */
     }
     .right-lane {
-      right: 5%; /* Moved inward by 5% */
+      right: 0;
+      padding-right: 5%; /* Inner shift inward */
     }
 
     .bubble {
@@ -232,7 +234,7 @@
       bubble.style.height = `${size}px`;
 
       let laneWidth = lane.offsetWidth;
-      if (!laneWidth || laneWidth < size) laneWidth = 80;
+      if (!laneWidth || laneWidth < size) laneWidth = 100;
       const maxLeft = Math.max(0, laneWidth - size);
       bubble.style.left = `${Math.random() * maxLeft}px`;
 
@@ -252,7 +254,7 @@
       }
       function spawn() {
         createBubble(lane);
-        const nextIn = 800 + Math.random() * 800; // Slower: 800–1600ms
+        const nextIn = 800 + Math.random() * 800;
         setTimeout(spawn, nextIn);
       }
       setTimeout(spawn, initialDelay);
