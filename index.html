@@ -21,6 +21,7 @@
       bottom: 0;
       top: 0;
       width: 8%;
+      min-width: 80px;
       pointer-events: none;
       z-index: 0;
     }
@@ -206,16 +207,20 @@
     function createBubble(lane) {
       const bubble = document.createElement('div');
       bubble.className = 'bubble';
-      const size = 75 + Math.random() * 50; // 75–125px
+      const size = 75 + Math.random() * 50;
       bubble.style.width = `${size}px`;
       bubble.style.height = `${size}px`;
 
-      const laneWidth = lane.clientWidth || 80;
+      let laneWidth = lane.offsetWidth;
+      if (!laneWidth || laneWidth < size) laneWidth = 80;
+
       const maxLeft = Math.max(0, laneWidth - size);
       bubble.style.left = `${Math.random() * maxLeft}px`;
 
-      const duration = 10 + Math.random() * 6; // 10–16 seconds
+      const duration = 10 + Math.random() * 6;
       bubble.style.animationDuration = `${duration}s`;
+
+      console.log(`🫧 Bubble created in ${lane.id}, size: ${size}px, duration: ${duration}s`);
 
       lane.appendChild(bubble);
       setTimeout(() => bubble.remove(), duration * 1000);
@@ -223,9 +228,13 @@
 
     function startLaneBubbles(laneId, initialDelay) {
       const lane = document.getElementById(laneId);
+      if (!lane) {
+        console.warn(`⚠️ Lane with id ${laneId} not found.`);
+        return;
+      }
       function spawn() {
         createBubble(lane);
-        const nextIn = 400 + Math.random() * 400; // 400–800ms
+        const nextIn = 400 + Math.random() * 400;
         setTimeout(spawn, nextIn);
       }
       setTimeout(spawn, initialDelay);
