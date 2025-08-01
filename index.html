@@ -209,9 +209,14 @@
       const size = 75 + Math.random() * 50; // 75–125px
       bubble.style.width = `${size}px`;
       bubble.style.height = `${size}px`;
-      bubble.style.left = `${Math.random() * (lane.clientWidth - size)}px`;
+
+      const laneWidth = lane.clientWidth || 80;
+      const maxLeft = Math.max(0, laneWidth - size);
+      bubble.style.left = `${Math.random() * maxLeft}px`;
+
       const duration = 10 + Math.random() * 6; // 10–16 seconds
       bubble.style.animationDuration = `${duration}s`;
+
       lane.appendChild(bubble);
       setTimeout(() => bubble.remove(), duration * 1000);
     }
