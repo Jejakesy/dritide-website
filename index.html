@@ -25,6 +25,7 @@
       min-width: 80px;
       z-index: 5;
       pointer-events: none;
+
       /* Removed guideline outline for cleaner look */
     }
 
@@ -260,8 +261,22 @@
       setTimeout(spawn, initialDelay);
     }
 
-    startLaneBubbles('leftLane', 0);
-    startLaneBubbles('rightLane', 400);
+    function positionBubbleLanes() {
+      const nav = document.querySelector('nav');
+      if (!nav) return;
+      const topOffset = nav.offsetTop + nav.offsetHeight;
+      document.querySelectorAll('.bubble-lane').forEach(lane => {
+        lane.style.top = `${topOffset}px`;
+      });
+    }
+
+    window.addEventListener('load', () => {
+      positionBubbleLanes();
+      startLaneBubbles('leftLane', 0);
+      startLaneBubbles('rightLane', 400);
+    });
+
+    window.addEventListener('resize', positionBubbleLanes);
   </script>
 </body>
 </html>
